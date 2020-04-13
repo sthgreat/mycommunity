@@ -21,6 +21,6 @@ public interface UserMapper {
     @Select("select * from m_user where user_name = #{name}")
     User selectByUserName(@Param(value = "name") String name);
 
-//    @Select()
-
+    @Select("select * from m_user where id = #{id}")
+    User selectByUserId(@Param(value = "id") Integer id);
 }

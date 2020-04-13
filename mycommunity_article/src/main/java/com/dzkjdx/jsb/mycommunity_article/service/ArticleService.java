@@ -19,4 +19,8 @@ public class ArticleService {
         }
         return ResponseVo.success(StatusCode.ARTICLE_ADD_SUCCESS);
     }
+
+    public Article selectById(Integer ArticleId) {
+        return articleMapper.selectDescById(ArticleId);
+    }
 }

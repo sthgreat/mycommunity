@@ -1,9 +1,13 @@
 package com.dzkjdx.jsb.mycommunity_article.controller;
 
+import com.dzkjdx.jsb.mycommunity_article.Enum.StatusCode;
+import com.dzkjdx.jsb.mycommunity_article.foreign.UserApp;
 import com.dzkjdx.jsb.mycommunity_article.pojo.Article;
+import com.dzkjdx.jsb.mycommunity_article.pojo.User;
 import com.dzkjdx.jsb.mycommunity_article.service.ArticleService;
 import com.dzkjdx.jsb.mycommunity_article.vo.ArticleVo;
 import com.dzkjdx.jsb.mycommunity_article.vo.ResponseVo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +21,9 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
+    @Autowired
+    private UserApp userApp;
+
     @PostMapping("/add")
     public ResponseVo<Article> addNewArticle(@RequestBody Article article){
         //TODO 传入消息队列中，经由消息队列放入数据库，需要一个服务专门处理数据库
@@ -24,7 +31,18 @@ public class ArticleController {
     }
 
     @GetMapping("/get")
-    public ResponseVo<ArticleVo> getArticleDetail(@RequestParam(value = "AuthorId") Integer authorId){
-        return null;
+    public ResponseVo<ArticleVo> getArticleDetail(@RequestParam(value = "ArticleId") Integer ArticleId){
+        Article article = articleService.selectById(ArticleId);
+        if(article == null){
+            return ResponseVo.error(StatusCode.ARTICLE_NOT_FOUND);
+        }
+        ArticleVo articleVo = new ArticleVo();
+        BeanUtils.copyProperties(article, articleVo);
+        User user = userApp.getUser(article.getAuthorId()).getData();
+        System.out.println(user.toString());
+        BeanUtils.copyProperties(user, articleVo);
+        return new ResponseVo<>(StatusCode.SUCCESS.getCode(),
+                StatusCode.SUCCESS.getDesc(),
+                articleVo);
     }
 }

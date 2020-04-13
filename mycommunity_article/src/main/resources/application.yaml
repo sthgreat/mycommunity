@@ -7,6 +7,12 @@ spring:
   redis:
     host: 47.100.89.205
     port: 6379
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  application:
+    name: articleApplication
 
 mybatis:
   configuration:

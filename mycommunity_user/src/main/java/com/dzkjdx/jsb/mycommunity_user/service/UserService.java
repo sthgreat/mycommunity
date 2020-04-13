@@ -106,4 +106,8 @@ public class UserService {
         return ResponseVo.success(StatusCode.LOGOUT_SUCCESS.getCode(),
                 StatusCode.LOGOUT_SUCCESS.getDesc());
     }
+
+    public User selectByUserId(Integer userId) {
+        return userMapper.selectByUserId(userId);
+    }
 }

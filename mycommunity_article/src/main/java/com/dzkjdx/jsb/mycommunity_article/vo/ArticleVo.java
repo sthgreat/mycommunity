@@ -4,4 +4,9 @@ import lombok.Data;
 
 @Data
 public class ArticleVo {
+    String title;
+    int likeCount;
+    int readCount;
+    int commentCount;
+    String userName;
 }

@@ -23,7 +23,10 @@ public enum StatusCode {
     NEED_LOGIN(1008, "未登录，需要登陆"),
 
     //5000为服务器本身有关
-    ERROR(5001, "服务出错");
+    ERROR(5001, "服务出错"),
+
+    //6000为服务有关
+    LINK_SUCCESS(6001, "服务连接成功");
 
     Integer code;
 

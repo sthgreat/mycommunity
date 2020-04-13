@@ -27,8 +27,13 @@ public enum StatusCode {
 
     ARTICLE_ADD_SUCCESS(2002, "添加文章成功"),
 
+    ARTICLE_NOT_FOUND(2003, "查找文章失败"),
+
+
     //5000为服务器本身有关
-    ERROR(5001, "服务出错");
+    ERROR(5001, "服务出错"),
+
+    SUCCESS(5002,"成功");
 
     Integer code;
 
