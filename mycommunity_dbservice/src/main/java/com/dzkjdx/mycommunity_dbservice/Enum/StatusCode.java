@@ -1,4 +1,4 @@
-package Enum;
+package com.dzkjdx.mycommunity_dbservice.Enum;
 
 import lombok.Getter;
 
@@ -22,8 +22,18 @@ public enum StatusCode {
 
     NEED_LOGIN(1008, "未登录，需要登陆"),
 
+    //2000文章有关
+    ARTICLE_ADD_FAIL(2001, "添加文章失败"),
+
+    ARTICLE_ADD_SUCCESS(2002, "添加文章成功"),
+
+    ARTICLE_NOT_FOUND(2003, "查找文章失败"),
+
+
     //5000为服务器本身有关
-    ERROR(5001, "服务出错");
+    ERROR(5001, "服务出错"),
+
+    SUCCESS(5002,"成功");
 
     Integer code;
 
