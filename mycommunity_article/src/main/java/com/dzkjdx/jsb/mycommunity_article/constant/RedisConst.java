@@ -6,4 +6,6 @@ package com.dzkjdx.jsb.mycommunity_article.constant;
 public class RedisConst {
     public static String USER = "user:";
     public static String USER_SESSION = "currentUser:";
+    public static String MsgId = "MsgId:";
+    public static String MsgNeedResend = "MsgNeedResend:";
 }
