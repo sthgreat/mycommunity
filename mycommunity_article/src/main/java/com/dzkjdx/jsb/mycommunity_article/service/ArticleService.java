@@ -47,7 +47,7 @@ public class ArticleService {
         rabbitTemplate.convertAndSend(RabbitConfig.articleAddExchange, RabbitConfig.articleAddBindKey,map,id);
         //创建并维护消息状态，状态为1
         redisTemplate.opsForHash().put(RedisConst.MsgNeedResend,
-                messageId, map);
+                messageId, gson.toJson(map, HashMap.class));
         redisTemplate.opsForHash().put(RedisConst.MsgId,messageId, MsgStatus.SENDED.getStatus());
     }
 
