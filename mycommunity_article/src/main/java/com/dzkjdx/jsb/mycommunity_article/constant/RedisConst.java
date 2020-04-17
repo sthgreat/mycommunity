@@ -8,4 +8,5 @@ public class RedisConst {
     public static String USER_SESSION = "currentUser:";
     public static String MsgId = "MsgId:";
     public static String MsgNeedResend = "MsgNeedResend:";
+    public static String MsgNeedReconsume = "MsgNeedReconsume";
 }

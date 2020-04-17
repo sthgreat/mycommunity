@@ -1,4 +1,4 @@
-package com.dzkjdx.mycommunity_dbservice.Enum;
+package com.dzkjdx.jsb.mycommunity_article.Enum.Enum;
 
 import lombok.Getter;
 

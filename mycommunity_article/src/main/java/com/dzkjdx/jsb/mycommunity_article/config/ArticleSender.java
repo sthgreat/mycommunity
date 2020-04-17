@@ -20,17 +20,29 @@ public class ArticleSender implements RabbitTemplate.ConfirmCallback {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    @Autowired
+    public ArticleSender(RabbitTemplate rabbitTemplate){
+        this.rabbitTemplate = rabbitTemplate;
+        rabbitTemplate.setConfirmCallback(this);
+    }
+
     @Override
+    //消息确认时，可能消息已经被消费!!!
     public void confirm(CorrelationData correlationData, boolean ack, String cause) {
         //TODO 这里在测试的时候没有进入该方法，另，需要定时任务处理重发和重新消费
         if(ack){
             log.info("消息:{}已发至队列",correlationData.getId());
-            redisTemplate.opsForHash().put(RedisConst.MsgId,
-                    Objects.requireNonNull(correlationData.getId()),
-                    MsgStatus.INQUEUE.getStatus());
+//            redisTemplate.opsForHash().put(RedisConst.MsgId,
+//                    Objects.requireNonNull(correlationData.getId()),
+//                    MsgStatus.INQUEUE.getStatus());
+//            log.info("修改消息状态为："+MsgStatus.INQUEUE.getStatus());
             //删除待发送缓存中的消息
             redisTemplate.opsForHash().delete(RedisConst.MsgNeedResend,
                     Objects.requireNonNull(correlationData.getId()));
+            log.info("删除发送端缓存消息，id："+correlationData.getId());
 
         }else{
             // TODO 标记未发送消息，加入缓存中，使用定时任务来处理重发

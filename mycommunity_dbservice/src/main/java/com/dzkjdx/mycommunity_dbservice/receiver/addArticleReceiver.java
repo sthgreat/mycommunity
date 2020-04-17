@@ -42,11 +42,18 @@ public class addArticleReceiver {
     public void addArticle(Map<String,String> msg, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
         boolean flag = true;
         Gson gson = new Gson();
+        log.info("消息："+msg.toString());
+        if(channel!=null){
+            log.info("传入了channel");
+        }
         try {
             //检查消息是否已经被消费
+            log.info("进入try");
             String status = (String)redisTemplate.opsForHash().get(RedisConst.MsgId, msg.get("messageId"));
+            log.info("消息状态是："+status + "消息id是："+msg.get("messageId"));
             assert status != null;
             if(!status.equals("4")){
+                log.info("消息未被消费");
                 String messageData = msg.get("messageData");
                 Article article = gson.fromJson(messageData, Article.class);
                 articleService.addArticle(article);
@@ -60,6 +67,7 @@ public class addArticleReceiver {
         }catch (Exception e){
             flag = false;
             // 修改消息状态为未成功消费
+            log.info("出错，消息未成功消费");
             redisTemplate.opsForHash().put(RedisConst.MsgId,
                     msg.get("messageId"), MsgStatus.NEEDRECONSUME.getStatus());
             //将消息加入redis待消费消息中
