@@ -13,7 +13,6 @@ spring:
         server-addr: 127.0.0.1:8848
   application:
     name: articleApplication
-
   rabbitmq:
     addresses: 127.0.0.1
     port: 5672
@@ -30,3 +29,9 @@ mybatis:
 
 server:
   port: 8082
+
+feign:
+  okhttp:
+    enabled: true
+  sentinel:
+    enabled: true

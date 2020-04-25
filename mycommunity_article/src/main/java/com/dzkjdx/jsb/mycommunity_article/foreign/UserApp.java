@@ -1,5 +1,6 @@
 package com.dzkjdx.jsb.mycommunity_article.foreign;
 
+import com.alibaba.nacos.api.naming.pojo.AbstractHealthChecker;
 import com.dzkjdx.jsb.mycommunity_article.pojo.User;
 import com.dzkjdx.jsb.mycommunity_article.vo.ResponseVo;
 import org.springframework.cloud.openfeign.FeignClient;
