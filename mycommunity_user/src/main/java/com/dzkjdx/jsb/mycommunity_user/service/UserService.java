@@ -68,16 +68,10 @@ public class UserService {
             return ResponseVo.error(StatusCode.USERNAME_PASSWORD_WRONG);
         }
 
-        //使用redis作分布式session（登陆时先验证本地session，然后验证分布式session，都没有就返回需要登陆）
         Gson gson = new Gson();
         String userString = gson.toJson(user);
-        UUID uuid = UUID.randomUUID();
-        response.addCookie(new Cookie("UID", uuid + ""));
-        redisTemplate.opsForValue().set(RedisConst.USER_SESSION + uuid, userString,
-                10, TimeUnit.MINUTES);
-
-        //本地session保存
-        session.setAttribute("CurrentUser", user);
+        //redis session保存
+        session.setAttribute("CurrentUser", userString);
         return ResponseVo.success(StatusCode.LOGIN_SUCCESS.getCode(),
                 StatusCode.LOGIN_SUCCESS.getDesc());
     }

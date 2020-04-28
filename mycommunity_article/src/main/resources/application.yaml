@@ -7,6 +7,9 @@ spring:
   redis:
     host: 47.100.89.205
     port: 6379
+  session:
+    redis:
+      flush-mode: immediate
   cloud:
     nacos:
       discovery:

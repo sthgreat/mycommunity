@@ -15,6 +15,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -23,6 +24,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/article")
+@CrossOrigin(origins = {"http://localhost:8081","null"})
 /**
  * 假设有一个需求，需要在返回article详细信息的同时，返回作者的名字等详细信息，
  * 需要调用其他的接口，在这里实践微服务（分布式）

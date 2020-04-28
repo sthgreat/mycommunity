@@ -14,6 +14,6 @@ public class FeignConf {
     @Bean
     public IRule feignRule() {
 //        List<Server> allServers = balancer.getAllServers();
-        return new BestAvailableRule();
+        return new WeightedResponseTimeRule();
     }
 }

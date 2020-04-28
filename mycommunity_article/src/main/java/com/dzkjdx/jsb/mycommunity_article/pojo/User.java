@@ -2,11 +2,12 @@ package com.dzkjdx.jsb.mycommunity_article.pojo;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Data
-public class User {
+public class User implements Serializable {
     int id;
     String userSex;
     String email;

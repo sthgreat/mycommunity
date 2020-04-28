@@ -1,8 +1,8 @@
-package com.dzkjdx.jsb.mycommunity_user.Interceptor;
+package com.dzkjdx.jsb.mycommunity_article.Interceptor;
 
-import com.dzkjdx.jsb.mycommunity_user.constant.RedisConst;
-import com.dzkjdx.jsb.mycommunity_user.exception.UserLoginException;
-import com.dzkjdx.jsb.mycommunity_user.pojo.User;
+import com.dzkjdx.jsb.mycommunity_article.constant.RedisConst;
+import com.dzkjdx.jsb.mycommunity_article.exception.UserLoginException;
+import com.dzkjdx.jsb.mycommunity_article.pojo.User;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -14,9 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.concurrent.TimeUnit;
 
 public class UserLoginInterceptor implements HandlerInterceptor {
-    @Autowired
-    private RedisTemplate<String, String> redisTemplate;
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //先从本地session以及redisSession中拿登录状态

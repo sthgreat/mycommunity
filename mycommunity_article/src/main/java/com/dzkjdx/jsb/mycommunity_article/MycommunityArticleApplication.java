@@ -3,12 +3,12 @@ package com.dzkjdx.jsb.mycommunity_article;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
-import org.apache.commons.lang.StringUtils;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,7 @@ import java.util.List;
 @MapperScan(basePackages = "com.dzkjdx.jsb.mycommunity_article.dao")
 @EnableDiscoveryClient
 @EnableFeignClients
+@EnableRedisHttpSession
 public class MycommunityArticleApplication {
 
     public static void main(String[] args) {
