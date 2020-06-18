@@ -6,9 +6,13 @@ import lombok.Getter;
 public enum MsgStatus {
     SENDED("1"),
 
-    INQUEUE("2"),
+//    INQUEUE("2"),
 
-    NEEDRESEND("3");
+    NEEDRESEND("3"),
+
+    SUCCESS("4"),
+
+    NEEDRECONSUME("5");
 
 
     String status;

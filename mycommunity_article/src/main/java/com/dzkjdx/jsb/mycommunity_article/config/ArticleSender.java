@@ -4,7 +4,6 @@ import com.dzkjdx.jsb.mycommunity_article.Enum.MsgStatus;
 import com.dzkjdx.jsb.mycommunity_article.constant.RedisConst;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

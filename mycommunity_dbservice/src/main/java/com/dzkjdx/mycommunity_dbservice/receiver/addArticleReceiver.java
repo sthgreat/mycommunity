@@ -74,7 +74,7 @@ public class addArticleReceiver {
             redisTemplate.opsForHash().put(RedisConst.MsgNeedReconsume,
                     msg.get("messageId"), gson.toJson(msg, HashMap.class));
         }finally {
-            if(flag == true){
+            if(flag){
                 channel.basicAck(tag,false);
                 log.info("成功消费消息");
             }else{

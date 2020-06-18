@@ -29,6 +29,10 @@ public enum StatusCode {
 
     ARTICLE_NOT_FOUND(2003, "查找文章失败"),
 
+    ARTICLE_DELETE_FAIL(2004, "删除文章失败"),
+
+    ARTICLE_DELETE_SUCCESS(2005, "删除文章成功"),
+
 
     //5000为服务器本身有关
     ERROR(5001, "服务出错"),

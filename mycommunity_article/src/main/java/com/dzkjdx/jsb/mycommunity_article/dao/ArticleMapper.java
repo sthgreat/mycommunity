@@ -1,6 +1,7 @@
 package com.dzkjdx.jsb.mycommunity_article.dao;
 
 import com.dzkjdx.jsb.mycommunity_article.pojo.Article;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -16,4 +17,7 @@ public interface ArticleMapper {
     @Select("select id,author_id,title,like_count,read_count,comment_count from user_article " +
             "where id = #{id}")
     Article selectDescById(@Param(value = "id") Integer id);
+
+    @Delete("delete from user_article where id = #{id}")
+    int deleteById(@Param(value = "id") Integer id);
 }

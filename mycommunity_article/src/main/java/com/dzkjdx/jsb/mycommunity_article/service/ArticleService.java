@@ -1,20 +1,17 @@
 package com.dzkjdx.jsb.mycommunity_article.service;
 
 import com.dzkjdx.jsb.mycommunity_article.Enum.MsgStatus;
-import com.dzkjdx.jsb.mycommunity_article.Enum.StatusCode;
 import com.dzkjdx.jsb.mycommunity_article.config.ArticleSender;
 import com.dzkjdx.jsb.mycommunity_article.config.RabbitConfig;
 import com.dzkjdx.jsb.mycommunity_article.constant.RedisConst;
 import com.dzkjdx.jsb.mycommunity_article.dao.ArticleMapper;
 import com.dzkjdx.jsb.mycommunity_article.pojo.Article;
-import com.dzkjdx.jsb.mycommunity_article.vo.ResponseVo;
 import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -60,5 +57,9 @@ public class ArticleService {
 
     public Article selectById(Integer ArticleId) {
         return articleMapper.selectDescById(ArticleId);
+    }
+
+    public int deleteById(Integer ArticleId){
+        return articleMapper.deleteById(ArticleId);
     }
 }
